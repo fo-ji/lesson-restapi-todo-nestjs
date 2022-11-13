@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  server:
+    platform: "linux/amd64"
+    container_name: server
+    build:
+      dockerfile: Dockerfile
+      context: .
+    env_file:
+      - ./server/.env
+    environment:
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./server:/server
+    command: sh -c "yarn start:dev"
+    ports:
+      - 3005:3005
+      - 5555:5555
+    tty: true
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:14-alpine
+    container_name: postgres
+    restart: always
+    environment:
+      # POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: udemy
+      TZ: 'Asia/Tokyo'
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db/postgres/data:/var/lib/postgresql/data
