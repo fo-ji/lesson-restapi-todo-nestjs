@@ -120,3 +120,10 @@ $ nest g service user --no-spec
 $ nest g service todo --no-spec
 $ nest g service prisma --no-spec
 ```
+
+### update schema
+```zsh
+$ docker exec -it server sh
+$ npx prisma migrate dev
+$ npx prisma generate
+```
