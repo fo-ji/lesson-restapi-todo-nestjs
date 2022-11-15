@@ -101,21 +101,22 @@ $ npx prisma generate
 ### install packages
 ```zsh
 $ docker-compose run --rm server yarn add @nestjs/config @nestjs/jwt @nestjs/passport
-$ docker-compose run --rm server yarn add cookie-parser csurf passport passport-jwt bcrypt class-validator
+$ docker-compose run --rm server yarn add cookie-parser csurf passport passport-jwt bcrypt class-validator class-transformer
 $ docker-compose run --rm server yarn add -D @types/express @types/cookie-parser @types/csurf @types/passport-jwt @types/bcrypt
 ```
 
 ### [sample] Create module, controller, service
 ```zsh
-$ docker-compose run --rm server nest g module auth
-$ docker-compose run --rm server nest g module user
-$ docker-compose run --rm server nest g module todo
-$ docker-compose run --rm server nest g module prisma
-$ docker-compose run --rm server nest g controller auth --no-spec
-$ docker-compose run --rm server nest g controller user --no-spec
-$ docker-compose run --rm server nest g controller todo --no-spec
-$ docker-compose run --rm server nest g service auth --no-spec
-$ docker-compose run --rm server nest g service user --no-spec
-$ docker-compose run --rm server nest g service todo --no-spec
-$ docker-compose run --rm server nest g service prisma --no-spec
+$ docker exec -it server sh
+$ nest g module auth
+$ nest g module user
+$ nest g module todo
+$ nest g module prisma
+$ nest g controller auth --no-spec
+$ nest g controller user --no-spec
+$ nest g controller todo --no-spec
+$ nest g service auth --no-spec
+$ nest g service user --no-spec
+$ nest g service todo --no-spec
+$ nest g service prisma --no-spec
 ```
