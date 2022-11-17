@@ -14,6 +14,9 @@ services:
     volumes:
       - ./server:/server
     command: sh -c "yarn start:dev"
+    networks:
+      - internal
+      - external
     ports:
       - 3005:3005
       - 5555:5555
@@ -30,7 +33,18 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: udemy
       TZ: 'Asia/Tokyo'
+    networks:
+      - internal
+      - external
     ports:
       - 5432:5432
     volumes:
       - ./db/postgres/data:/var/lib/postgresql/data
+
+networks:
+  internal:
+    driver: bridge
+    internal: true
+  external:
+    driver: bridge
+    internal: false
