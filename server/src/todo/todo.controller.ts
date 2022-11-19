@@ -45,8 +45,8 @@ export class TodoController {
   @Patch(':id')
   updateTask(
     @Req() req: Request,
-    @Body() @Param('id', ParseIntPipe) taskId: number,
-    dto: UpdateTaskDto,
+    @Param('id', ParseIntPipe) taskId: number,
+    @Body() dto: UpdateTaskDto,
   ): Promise<Task> {
     return this.todoService.updateTaskById(req.user.id, taskId, dto);
   }
