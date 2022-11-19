@@ -127,3 +127,10 @@ $ docker exec -it server sh
 $ npx prisma migrate dev
 $ npx prisma generate
 ```
+
+### deploy schema
+※ change DATABASE_URL
+```zsh
+$ docker exec -it server sh
+$ npx prisma migrate deploy
+```
